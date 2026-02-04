@@ -32,6 +32,11 @@ export const useAdminSocket = () => {
       newSocket.emit('admin-join');
     });
 
+    newSocket.on('connect_error', (err) => {
+      console.error('Socket connection error:', err.message);
+      setIsConnected(false);
+    });
+
     newSocket.on('disconnect', () => {
       setIsConnected(false);
     });

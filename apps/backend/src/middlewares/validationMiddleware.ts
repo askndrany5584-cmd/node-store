@@ -22,11 +22,7 @@ export const validateRegister = [
     .withMessage("Valid email is required"),
   body("password")
     .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters long")
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage(
-      "Password must contain at least one lowercase, one uppercase, and one number",
-    ),
+    .withMessage("Password must be at least 6 characters long"),
   body("username")
     .optional()
     .isLength({ min: 3, max: 30 })

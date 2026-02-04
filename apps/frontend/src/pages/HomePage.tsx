@@ -28,16 +28,16 @@ export default function HomePage() {
         setLoading(true);
         setError(null);
         const data = await productService.getAll();
-        
+
         if (!data || !Array.isArray(data)) {
           console.error("Invalid data format received:", data);
           setError("Received invalid data from server");
           setProducts([]);
           return;
         }
-        
+
         setProducts(data);
-        
+
         const uniqueCategories = [...new Set(data.map((p: Product) => p.category))];
         setCategories(uniqueCategories.slice(0, 6));
       } catch (err) {
@@ -59,13 +59,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-slate-950" />
-        
+
         <div className="container mx-auto px-4 relative">
           <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-16 lg:py-24">
             <div className="max-w-xl">
-              <Badge color="blue" className="mb-6 text-xs font-medium tracking-wider uppercase">
-                New Collection 2024
-              </Badge>
+         
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
                 Premium Tech
                 <span className="block text-blue-500">For Everyone</span>
@@ -85,7 +83,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </div>
-              
+
               <div className="flex gap-8 mt-12 pt-8 border-t border-slate-800">
                 <div>
                   <p className="text-2xl font-bold text-white">50K+</p>
@@ -101,14 +99,17 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="hidden lg:block relative">
               <div className="relative aspect-square max-w-md mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-3xl blur-3xl" />
                 <img
-                  src="https://images.unsplash.com/photo-1498049860654-af1e5e5667ba?w=800&auto=format&fit=crop&q=60"
+                  src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=600&auto=format&fit=crop&q=60"
                   alt="Tech products"
                   className="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://via.placeholder.com/600x600?text=Laptop+Tech";
+                  }}
                 />
               </div>
             </div>
@@ -159,9 +160,9 @@ export default function HomePage() {
               <AlertCircle className="w-12 h-12 mx-auto text-red-500 mb-4" />
               <p className="text-red-700 font-medium mb-2">{error}</p>
               <p className="text-red-500 text-sm mb-4">The server may be experiencing issues.</p>
-              <Button 
-                color="light" 
-                size="sm" 
+              <Button
+                color="light"
+                size="sm"
                 onClick={() => window.location.reload()}
               >
                 <RefreshCw className="w-4 h-4 mr-2" /> Retry
@@ -206,7 +207,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </Link>
-                  
+
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{product.category}</p>
                     <Link to={`/products/${product.id}`}>
@@ -237,11 +238,11 @@ export default function HomePage() {
             <p className="text-blue-600 font-medium mb-2">Browse</p>
             <h2 className="text-3xl font-bold text-slate-900">Shop by Category</h2>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {(categories.length > 0 ? categories : ["Electronics", "Laptops", "Phones", "Accessories", "Gaming", "Audio"]).map((category) => (
-              <Link 
-                key={category} 
+              <Link
+                key={category}
                 to={`/products?category=${category}`}
                 className="group"
               >
@@ -251,7 +252,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-medium text-slate-900 text-sm">{category}</h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    {categories.length > 0 
+                    {categories.length > 0
                       ? `${products.filter(p => p.category === category).length} items`
                       : "Explore"
                     }
@@ -276,7 +277,7 @@ export default function HomePage() {
                 View all <ArrowUpRight className="ml-1 w-4 h-4" />
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {newArrivals.map((product) => (
                 <div key={product.id} className="group">
@@ -293,7 +294,7 @@ export default function HomePage() {
                       <Badge color="blue" className="absolute top-3 left-3">New</Badge>
                     </div>
                   </Link>
-                  
+
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{product.category}</p>
                     <Link to={`/products/${product.id}`}>

@@ -1,0 +1,12 @@
+.env
+node_modules
+logs/
+.agent/
+.vscode/
+.idea/
+dist/
+.vercel
+.env*.local
+.env*.prod
+*.db
+bun.lock

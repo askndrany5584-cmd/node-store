@@ -47,7 +47,7 @@ router.use(authorizeRoles("ADMIN"));
 
 /**
  * @swagger
- * /api/admin/dashboard:
+ * /dashboard:
  *   get:
  *     summary: Get admin dashboard stats
  *     tags: [Admin]
@@ -63,7 +63,7 @@ router.get("/stats", getStats);
 
 /**
  * @swagger
- * /api/admin/csv/template:
+ * /csv/template:
  *   get:
  *     summary: Download product CSV template
  *     tags: [Admin]
@@ -82,7 +82,7 @@ router.get("/csv/template", downloadTemplate);
 
 /**
  * @swagger
- * /api/admin/csv/export:
+ * /csv/export:
  *   get:
  *     summary: Export all products to CSV
  *     tags: [Admin]
@@ -101,7 +101,7 @@ router.get("/csv/export", exportProducts);
 
 /**
  * @swagger
- * /api/admin/csv/import:
+ * /csv/import:
  *   post:
  *     summary: Import products from CSV
  *     tags: [Admin]
@@ -124,7 +124,7 @@ router.post("/csv/import", upload.single("csvFile"), importProducts);
 
 /**
  * @swagger
- * /api/admin/orders:
+ * /orders:
  *   get:
  *     summary: Get all orders
  *     tags: [Admin, Orders]
@@ -161,7 +161,7 @@ router.get("/orders", validatePagination, getOrders);
 
 /**
  * @swagger
- * /api/admin/orders/{id}:
+ * /orders/{id}:
  *   get:
  *     summary: Get order by ID
  *     tags: [Admin, Orders]
@@ -191,7 +191,7 @@ router.get("/orders/:id", validateIdParam, getOrderById);
 
 /**
  * @swagger
- * /api/admin/orders/{id}:
+ * /orders/{id}:
  *   patch:
  *     summary: Update order status
  *     tags: [Admin, Orders]
@@ -220,7 +220,7 @@ router.patch("/orders/:id", validateIdParam, updateOrder);
 
 /**
  * @swagger
- * /api/admin/orders/bulk-status:
+ * /orders/bulk-status:
  *   patch:
  *     summary: Bulk update order status
  *     tags: [Admin, Orders]
@@ -250,7 +250,7 @@ router.patch("/orders/bulk-status", validateBulkOrderUpdate, bulkUpdateOrderStat
 
 /**
  * @swagger
- * /api/admin/orders/export:
+ * /orders/export:
  *   get:
  *     summary: Export orders to CSV
  *     tags: [Admin, Orders]
@@ -269,7 +269,7 @@ router.get("/orders/export", exportOrders);
 
 /**
  * @swagger
- * /api/admin/upload:
+ * /upload:
  *   post:
  *     summary: Upload an image
  *     tags: [Admin]

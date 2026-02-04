@@ -1,4 +1,3 @@
-
 import { Router, Request, Response } from "express";
 import multer from "multer";
 import {
@@ -58,7 +57,7 @@ router.use(authenticateToken);
 
 /**
  * @swagger
- * /api/user/products:
+ * /products:
  *   get:
  *     summary: Get available products
  *     tags: [User]
@@ -113,7 +112,7 @@ router.get("/products", validatePagination, getAvailableProducts);
 
 /**
  * @swagger
- * /api/user/products/{id}:
+ * /products/{id}:
  *   get:
  *     summary: Get product details
  *     tags: [User]
@@ -145,7 +144,7 @@ router.get("/products/:id", validateIdParam, getProductById);
 
 /**
  * @swagger
- * /api/user/orders:
+ * /orders:
  *   get:
  *     summary: Get my orders
  *     tags: [User]
@@ -189,7 +188,7 @@ router.get("/orders", validatePagination, getMyOrders);
 
 /**
  * @swagger
- * /api/user/orders/{id}:
+ * /orders/{id}:
  *   get:
  *     summary: Get order details
  *     tags: [User]
@@ -221,7 +220,7 @@ router.get("/orders/:id", validateIdParam, getMyOrderById);
 
 /**
  * @swagger
- * /api/user/orders:
+ * /orders:
  *   post:
  *     summary: Create a new order
  *     tags: [User]
@@ -253,7 +252,7 @@ router.post("/orders", validateCreateOrder, createOrder);
 
 /**
  * @swagger
- * /api/user/orders/{id}/cancel:
+ * /orders/{id}/cancel:
  *   post:
  *     summary: Cancel an order
  *     tags: [User]
@@ -285,7 +284,7 @@ router.post("/orders/:id/cancel", validateIdParam, cancelMyOrder);
 
 /**
  * @swagger
- * /api/user/orders/{id}/confirm-delivery:
+ * /orders/{id}/confirm-delivery:
  *   post:
  *     summary: Confirm order delivery
  *     tags: [User]
@@ -324,7 +323,7 @@ router.post("/orders/:id/confirm-delivery", validateIdParam, confirmDelivery);
 
 /**
  * @swagger
- * /api/user/orders/summary:
+ * /orders/summary:
  *   get:
  *     summary: Get order summary
  *     tags: [User]
@@ -348,7 +347,7 @@ router.get("/orders/summary", getOrderSummary);
 
 /**
  * @swagger
- * /api/user/profile:
+ * /profile:
  *   get:
  *     summary: Get user profile
  *     tags: [User]
@@ -372,7 +371,7 @@ router.get("/profile", getUserProfile);
 
 /**
  * @swagger
- * /api/user/profile:
+ * /profile:
  *   post:
  *     summary: Update user profile
  *     tags: [User]
@@ -413,7 +412,7 @@ router.post("/profile", validateUpdateProfile, postUserProfile);
 
 /**
  * @swagger
- * /api/user/upload:
+ * /upload:
  *   post:
  *     summary: Upload a user profile image
  *     tags: [User]
@@ -481,7 +480,7 @@ router.post(
 
 /**
  * @swagger
- * /api/user/cart:
+ * /cart:
  *   get:
  *     summary: Get shopping cart
  *     tags: [User]
@@ -512,7 +511,7 @@ router.get("/cart", getMyCart);
 
 /**
  * @swagger
- * /api/user/cart:
+ * /cart:
  *   post:
  *     summary: Add item to cart
  *     tags: [User]
@@ -553,7 +552,7 @@ router.post("/cart", validateAddToCart, addToCart);
 
 /**
  * @swagger
- * /api/user/cart/{id}:
+ * /cart/{id}:
  *   put:
  *     summary: Update cart item quantity
  *     tags: [User]
@@ -596,7 +595,7 @@ router.put("/cart/:id", validateIdParam, validateUpdateCartItem, updateCartItem)
 
 /**
  * @swagger
- * /api/user/cart:
+ * /cart:
  *   delete:
  *     summary: Clear cart
  *     tags: [User]
@@ -620,7 +619,7 @@ router.delete("/cart", clearCart);
 
 /**
  * @swagger
- * /api/user/wishlist:
+ * /wishlist:
  *   get:
  *     summary: Get wishlist
  *     tags: [User]
@@ -645,7 +644,7 @@ router.delete("/cart", clearCart);
 router.get("/wishlist", getMyWishlist);
 /**
  * @swagger
- * /api/user/wishlist/toggle:
+ * /wishlist/toggle:
  *   post:
  *     summary: Toggle item in wishlist
  *     tags: [User]
@@ -762,6 +761,7 @@ router.post("/wishlist/toggle", validateToggleWishlist, toggleWishlist);
  *           type: string
  *     OrderSummary:
  *       type: object
+
  *       properties:
  *         totalOrders:
  *           type: integer

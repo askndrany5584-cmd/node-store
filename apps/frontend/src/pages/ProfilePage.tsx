@@ -56,8 +56,8 @@ export default function ProfilePage() {
         
         // Update local state with fetched data
         setProfileForm({
-          first_name: data.first_name || "",
-          last_name: data.last_name || "",
+          firstName: data.firstName || "",
+          lastName: data.lastName || "",
           phone: data.phone || "",
         });
         
